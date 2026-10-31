@@ -1,10 +1,10 @@
 ---
-name: inkfold
+name: every-joule-style
 description: 用用户自己的内容做一本“会动的书”网站：写实的书摆在木桌上，翻到每一课，右页的钢笔墨线插图先一笔一笔画出来、再从纸面立起来，变成可以拖动的 3D 小装置（读数杯、纸签、开关），左页是“预测 → 动手 → 掀开翻盖看解释 → 挑战盖章”。风格类似 Every Joule。任何学科都能用（物理、化学、生物、地理、数学、历史、语文……）。当用户想做互动教材、互动书、3D 立体书、可探索式讲解、把课文 / 讲义 / 知识点做成能动手的网页，或者说“做成 Every Joule 那样”时使用。Use for interactive pop-up book / explorable textbook / ink-line 3D lesson websites built from the user's own content.
 license: PolyForm Noncommercial 1.0.0（见 LICENSE.md）
 ---
 
-# inkfold：墨线立体互动书
+# every-joule-style：Every Joule 风格的墨线立体互动书（非官方复刻）
 
 这个 skill 带着一套完整的引擎（`template/`）：书本、桌子、光照、墨线笔画、插图“印在纸上再立起来”、翻盖、印章、控制条、放大镜、音效、自动演示、附页都已经做好。**你要做的只有三件事：写内容、写每课的立体装置、截图自查。** 不要从零写引擎，也不要改引擎的视觉参数。
 

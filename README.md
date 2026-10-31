@@ -1,8 +1,10 @@
-# inkfold · 墨线立体互动书
+# Every Joule 风格互动书 skill（every-joule-style）
 
 **中文** | [English](README.en.md)
 
-一个 AI skill：把你自己的内容做成一本“会动的书”网页。
+> **非官方复刻。** 这是我们照 [Every Joule](https://iamtechartist.com/every-joule/)（作者 Techartist）的风格重新实现的引擎和 AI skill，和原作者没有关联。原作没有公开源码和许可证，这里的代码、文字、插图全部是重新写的，没有使用原作的任何代码和素材。喜欢这种风格，请先去看原作。
+
+一个 AI skill：把你自己的内容做成一本 Every Joule 风格的“会动的书”网页。
 
 ![翻开的书：左页课文，右页立起来的斜坡装置](docs/ramp.jpg)
 
@@ -26,7 +28,7 @@
 
 你对 AI 说：
 
-> 用 inkfold，把我这份《化学反应速率》讲义做成互动书。
+> 用 every-joule-style 这个 skill，把我这份《化学反应速率》讲义做成互动书。
 
 > 做一本像 Every Joule 那样会动的书，讲初中地理的等高线和地形，3 课。
 
@@ -41,18 +43,18 @@ AI 会：
 
 ## 安装
 
-把 `skills/inkfold` 整个文件夹复制到你的 AI 工具读取 skill 的位置：
+把 `skills/every-joule-style` 整个文件夹复制到你的 AI 工具读取 skill 的位置：
 
 | 工具 | 位置 |
 |---|---|
-| Claude Code | `~/.claude/skills/inkfold/`，或项目里的 `.claude/skills/inkfold/` |
-| Codex | `~/.codex/skills/inkfold/`，或项目里的 `.agents/skills/inkfold/` |
-| Cursor 等支持 Agent Skills 的工具 | 项目里的 `.agents/skills/inkfold/` 或 `.cursor/skills/inkfold/` |
+| Claude Code | `~/.claude/skills/every-joule-style/`，或项目里的 `.claude/skills/every-joule-style/` |
+| Codex | `~/.codex/skills/every-joule-style/`，或项目里的 `.agents/skills/every-joule-style/` |
+| Cursor 等支持 Agent Skills 的工具 | 项目里的 `.agents/skills/every-joule-style/` 或 `.cursor/skills/every-joule-style/` |
 | 其他 AI | 把 `SKILL.md` 的内容贴给它，并告诉它 skill 文件夹在哪里 |
 
 ```bash
-git clone https://github.com/james123wang5/inkfold.git
-cp -r inkfold/skills/inkfold ~/.claude/skills/
+git clone https://github.com/james123wang5/every-joule-style.git
+cp -r every-joule-style/skills/every-joule-style ~/.claude/skills/
 ```
 
 需要 Node.js 20 以上，以及 Chrome / Chromium / Edge 任意一个（自查截图用）。
@@ -60,17 +62,17 @@ cp -r inkfold/skills/inkfold ~/.claude/skills/
 ## 不用 AI，直接用模板
 
 ```bash
-node skills/inkfold/scripts/new-book.mjs my-book --title "我的书" --lang zh
+node skills/every-joule-style/scripts/new-book.mjs my-book --title "我的书" --lang zh
 cd my-book && npm install && npm run dev      # http://localhost:5173 ，网址加 #3 直接翻到第 3 个跨页
 node tools/check.mjs --demo                   # 检查内容格式、逐页截图、收集报错
 ```
 
-改 `src/content/` 下的 `config.js`（书名、封面、图例、来源）、`lessons.js`（每课文字）、`quiz.js`（测验），在 `src/lessons/` 下写每课的装置。接口说明见 [`references/apparatus.md`](skills/inkfold/references/apparatus.md)。
+改 `src/content/` 下的 `config.js`（书名、封面、图例、来源）、`lessons.js`（每课文字）、`quiz.js`（测验），在 `src/lessons/` 下写每课的装置。接口说明见 [`references/apparatus.md`](skills/every-joule-style/references/apparatus.md)。
 
 ## 里面有什么
 
 ```
-skills/inkfold/
+skills/every-joule-style/
   SKILL.md              AI 读的主说明：工作流程和必须遵守的规则
   references/           问答清单、内容格式、写装置的接口、各学科配方、风格规范、自查清单
   template/             完整引擎（Vite + three.js）+ 两课示例（物理“滑下斜坡”、地理“等高线”）
@@ -83,7 +85,7 @@ skills/inkfold/
 
 ## 许可证和致谢
 
-- 程序和文字：[PolyForm Noncommercial 1.0.0](skills/inkfold/LICENSE.md)。可以免费使用、修改、分享，**不能用于商业用途**。
+- 程序和文字：[PolyForm Noncommercial 1.0.0](skills/every-joule-style/LICENSE.md)。可以免费使用、修改、分享，**不能用于商业用途**。
 - `template/public/audio/` 的音效是 Freesound 上的 CC0 录音，出处见那里的 README。
 - 字体和程序库（three.js、postprocessing、N8AO、KaTeX、Noto Serif SC、霞鹜文楷、Source Serif 4、Caveat）通过 npm 安装，各自按自己的许可证使用。
-- 版式和“插图从纸面立起来”的想法受 [Every Joule](https://iamtechartist.com/every-joule/)（Techartist）启发。这里的代码、文字、插图都是重新写的，没有使用原作的代码和素材。
+- 风格来自 [Every Joule](https://iamtechartist.com/every-joule/)（Techartist）：书本版式、“插图从纸面立起来”、预测—实验—翻盖、读数杯都是向它学的。本项目是非官方复刻，代码、文字、插图都是重新写的，没有使用原作的代码和素材。用这个 skill 做的书请不要以 Every Joule 的名义发布。

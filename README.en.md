@@ -1,8 +1,10 @@
-# inkfold · Ink pop-up books
+# Every Joule–style interactive book skill (every-joule-style)
 
 [中文](README.md) | **English**
 
-An AI skill that turns your own content into a web book that moves.
+> **Unofficial reimplementation.** This engine and AI skill recreate the style of [Every Joule](https://iamtechartist.com/every-joule/) by Techartist. It is not affiliated with or endorsed by the original author. The original has no public source or license; everything here — code, text, illustrations — was written from scratch, and no code or assets from the original are used. If you like the style, go see the original first.
+
+An AI skill that turns your own content into an Every Joule–style web book that moves.
 
 ![An open book: lesson text on the left, a ramp apparatus standing up on the right](docs/ramp.jpg)
 
@@ -26,7 +28,7 @@ Install the skill in your AI coding assistant (Claude Code, Codex, Cursor…), t
 
 You tell your AI:
 
-> Use inkfold to turn my handout on reaction rates into an interactive book.
+> Use the every-joule-style skill to turn my handout on reaction rates into an interactive book.
 
 > Make a moving book like Every Joule about contour lines and landforms, 3 lessons.
 
@@ -41,18 +43,18 @@ The AI will:
 
 ## Install
 
-Copy the whole `skills/inkfold` folder to wherever your AI tool looks for skills:
+Copy the whole `skills/every-joule-style` folder to wherever your AI tool looks for skills:
 
 | Tool | Location |
 |---|---|
-| Claude Code | `~/.claude/skills/inkfold/`, or `.claude/skills/inkfold/` in a project |
-| Codex | `~/.codex/skills/inkfold/`, or `.agents/skills/inkfold/` in a project |
-| Cursor and other Agent Skills tools | `.agents/skills/inkfold/` or `.cursor/skills/inkfold/` in a project |
+| Claude Code | `~/.claude/skills/every-joule-style/`, or `.claude/skills/every-joule-style/` in a project |
+| Codex | `~/.codex/skills/every-joule-style/`, or `.agents/skills/every-joule-style/` in a project |
+| Cursor and other Agent Skills tools | `.agents/skills/every-joule-style/` or `.cursor/skills/every-joule-style/` in a project |
 | Any other AI | Paste the contents of `SKILL.md` and tell it where the skill folder is |
 
 ```bash
-git clone https://github.com/james123wang5/inkfold.git
-cp -r inkfold/skills/inkfold ~/.claude/skills/
+git clone https://github.com/james123wang5/every-joule-style.git
+cp -r every-joule-style/skills/every-joule-style ~/.claude/skills/
 ```
 
 Requires Node.js 20+ and Chrome, Chromium or Edge (for the screenshot checks).
@@ -60,17 +62,17 @@ Requires Node.js 20+ and Chrome, Chromium or Edge (for the screenshot checks).
 ## Use the template without an AI
 
 ```bash
-node skills/inkfold/scripts/new-book.mjs my-book --title "My Book" --lang en
+node skills/every-joule-style/scripts/new-book.mjs my-book --title "My Book" --lang en
 cd my-book && npm install && npm run dev      # http://localhost:5173 — add #3 to jump to spread 3
 node tools/check.mjs --demo                   # validate content, screenshot every page, collect errors
 ```
 
-Edit `config.js` (title, cover, legend, references), `lessons.js` (lesson text) and `quiz.js` under `src/content/`, and write each lesson's apparatus under `src/lessons/`. The API is documented in [`references/apparatus.md`](skills/inkfold/references/apparatus.md) (the skill's reference docs are in Chinese; modern AI assistants read them fine). Setting `lang: 'en'` switches every built-in label, button and appendix text to English.
+Edit `config.js` (title, cover, legend, references), `lessons.js` (lesson text) and `quiz.js` under `src/content/`, and write each lesson's apparatus under `src/lessons/`. The API is documented in [`references/apparatus.md`](skills/every-joule-style/references/apparatus.md) (the skill's reference docs are in Chinese; modern AI assistants read them fine). Setting `lang: 'en'` switches every built-in label, button and appendix text to English.
 
 ## What's inside
 
 ```
-skills/inkfold/
+skills/every-joule-style/
   SKILL.md              Main instructions for the AI: workflow and hard rules
   references/           Q&A script, content format, apparatus API, subject recipes, style guide, self-check list
   template/             Full engine (Vite + three.js) + two sample lessons (physics ramp, geography contours)
@@ -83,7 +85,7 @@ The engine covers: a millimetre-scale realistic desk scene (window light, proced
 
 ## License and credits
 
-- Code and text: [PolyForm Noncommercial 1.0.0](skills/inkfold/LICENSE.md). Free to use, modify and share, **not for commercial use**.
+- Code and text: [PolyForm Noncommercial 1.0.0](skills/every-joule-style/LICENSE.md). Free to use, modify and share, **not for commercial use**.
 - Sounds in `template/public/audio/` are CC0 recordings from Freesound; sources are listed in the README there.
 - Fonts and libraries (three.js, postprocessing, N8AO, KaTeX, Noto Serif SC, LXGW WenKai, Source Serif 4, Caveat) are installed from npm under their own licenses.
-- The layout and the idea of figures rising off the page were inspired by [Every Joule](https://iamtechartist.com/every-joule/) by Techartist. All code, text and illustrations here were written from scratch; no code or assets from the original are used.
+- The style comes from [Every Joule](https://iamtechartist.com/every-joule/) by Techartist: the book layout, figures rising off the page, predict–experiment–flap, and the gauge cups were all learned from it. This is an unofficial recreation; all code, text and illustrations were written from scratch with no code or assets from the original. Please don't publish books made with this skill under the Every Joule name.

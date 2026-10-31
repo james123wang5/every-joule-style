@@ -30,7 +30,7 @@ writeFileSync(cfgPath, cfg);
 
 const pkgPath = join(out, 'package.json');
 const pkg = JSON.parse(readFileSync(pkgPath, 'utf8'));
-pkg.name = (out.split(/[\\/]/).pop().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '') || 'inkfold');
+pkg.name = (out.split(/[\\/]/).pop().toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/^-+|-+$/g, '') || 'every-joule-style');
 writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n');
 
 console.log(`已建好：${out}
