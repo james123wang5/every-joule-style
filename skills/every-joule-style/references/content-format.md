@@ -104,7 +104,7 @@ export const QUIZ = [
 
 ## 5. 字数预算
 
-排版放不下时 `check.mjs` 会报“左页放不下 / 偏挤 / 图注太长”。按这个预算写，一般不会超：
+排版放不下时 `check.mjs` 会报“左页放不下 / 偏挤 / 图注太长”。下表是单项上限；**各项同时取上限一定放不下**，总量规则：导语两段合计 ≤ 70 字、关键词 3 个、预测选项 3 个时，其余各项按上限写没问题；关键词或选项每多 1 个，导语或 explain 少写约 20 字。
 
 | 字段 | 中文 | 英文 |
 |---|---|---|
@@ -124,4 +124,4 @@ export const QUIZ = [
 
 书页文字（explanation、equation、keywords、predict、explain、quiz）里用 `$...$` 写简单公式：`_` 下标、`^` 上标、`{}` 分组、`\rm{…}` 直立字，以及 `\times \cdot \theta \alpha \beta \varphi \phi \Delta \sqrt \approx \pi \ge \le \pm \ne \to \Rightarrow \omega \mu \half \deg \quad`。字母一律斜体；函数名、单位、中文下标用 `\rm{…}`（如 `\rm{sin}`、`v_{\rm{合}}`）。**不认识的命令会被直接丢掉**（`\frac`、`\cos` 都不支持），分数写成 `a/b` 或 `÷`，根号写 `\sqrt(…)`（只画一个 √ 加括号）。JS 字符串里反斜杠要写两个：`'$v_0 \\rm{sin}\\theta$'`。
 
-页边手写的“你的数据”（`setNumbers`）、纸签、演示字幕**不解析** `$...$`，直接用 Unicode：`v₀ = 2.0 m/s`、`√(2gh)`、`θ = 30°`、`gT² ≈ 0.098 m`。
+书页上印的字都解析 `$...$`：除上面这些，`challenge.text`、`figure`、`figureNote`、`tryHint`、`exhibits` 的 note / hint、开关标签也可以用。页边手写的“你的数据”（`setNumbers`）、纸签（`makeTag`）、`card` 里自己画的字、演示字幕、`toast` **不解析** `$...$`，直接用 Unicode：`v₀ = 2.0 m/s`、`√(2gh)`、`θ = 30°`、`gT² ≈ 0.098 m`。

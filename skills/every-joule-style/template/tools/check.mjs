@@ -163,7 +163,8 @@ for (const s of info.sort((a, b) => a.k - b.k)) {
   if (s.live) {
     if (!(await waitFor(`__app.ctl.current?.k === ${s.k} && __app.ctl.current.pop.state === 'live'`, 20000))) W(`${where}：等了 20 秒插图还没立起来`);
   }
-  // 第一次翻到一课会自动放演示；截图前停掉，等镜头回到默认机位
+  // 第一次翻到一课会自动放演示（立起来后约 0.6 秒才开播）：等它开播再停掉，等镜头回到默认机位
+  if (s.live) await waitFor(`__app.ctl.watched.has(${s.k})`, 4000);
   await js('__app.ctl.stopWatch()');
   await sleep(1800);
   shots.push(await shot(`k${String(s.k).padStart(2, '0')}.png`));
@@ -176,8 +177,9 @@ for (const s of info.sort((a, b) => a.k - b.k)) {
   if (DEMO && s.live && s.shots) {
     if (s.ex > 1) { await js('__app.ctl.current.switchExhibit(0, true)'); await sleep(300); }
     await js('__app.ctl.replay()');
+    // 按演示自己的时钟拍：每个镜头 2 秒，在第 1.6 秒处截图（不受截图耗时影响）
     for (let i = 0; i < s.shots; i++) {
-      await sleep(i === 0 ? 1600 : 2000);
+      await waitFor(`!__app.ctl.watch || __app.ctl.watch.t >= ${2 * i + 1.6}`, 8000);
       shots.push(await shot(`k${String(s.k).padStart(2, '0')}-demo${i + 1}.png`));
     }
     await sleep(800);
